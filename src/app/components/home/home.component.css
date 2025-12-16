@@ -1,29 +1,28 @@
-.dashboard-container {
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #f4f4f9;
-  min-height: 100vh;
+/* Sección general */
+.seccion-jugadoras {
+  padding: 60px 20px;
+  background-color: #f8f9fa;
 }
 
-.navbar {
-  background-color: #2c3e50;
-  color: white;
-  padding: 1rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.btn-logout {
-  background-color: #e74c3c;
-  color: white;
-  border: none;
-  padding: 8px 15px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.content {
-  padding: 2rem;
+.seccion-jugadoras h2 {
   text-align: center;
+  font-size: 2.5rem;
+  color: #2c3e50;
+  margin-bottom: 40px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* --- REJILLA INTELIGENTE (GRID) --- */
+.grid-jugadoras {
+  display: grid;
+  /* Crea columnas automáticamente. Mínimo 280px de ancho cada una. */
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  
+  /* Espacio entre tarjetas */
+  gap: 30px;
+  
+  /* Centrado y ancho máximo */
+  max-width: 1200px;
+  margin: 0 auto;
 }

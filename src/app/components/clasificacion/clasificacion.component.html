@@ -35,11 +35,21 @@
 
           <td class="equipo-col">
             @if (equipo.escudo) {
-            <img [src]="equipo.escudo" alt="Escudo" class="escudo-img" />
+            <img [src]="api.URL_IMAGENES + equipo.escudo" alt="Escudo" class="escudo-img" />
             }
-            <span class="nombre-equipo">{{ equipo.nombre }}</span>
-          </td>
 
+            <span class="nombre-equipo">{{ equipo.nombre }}</span>
+
+            @if (modoEdicion) {
+            <input
+              type="text"
+              [(ngModel)]="equipo.escudo"
+              placeholder="Ej: Colmenarejo.png"
+              class="form-control form-control-sm"
+              style="width: 150px; margin-top: 5px; display: block"
+            />
+            }
+          </td>
           <td class="fw-bold">{{ equipo.puntos }}</td>
 
           <td>
@@ -128,21 +138,27 @@
           </td>
           }
         </tr>
-        }
-
-        <!-- FILA DE CREACIÓN (SOLO ADMIN Y MODO EDICIÓN) -->
-        @if (modoEdicion) {
+        } @if (modoEdicion) {
         <tr class="fila-creacion" style="background-color: #e8f8f5; border-top: 2px solid #2ecc71">
           <td><span class="badge bg-success">+</span></td>
+
           <td>
             <input
               type="text"
               [(ngModel)]="nuevoEquipo.nombre"
               placeholder="Nombre Equipo"
               class="form-control form-control-sm"
+              style="min-width: 150px; margin-bottom: 5px"
+            />
+            <input
+              type="text"
+              [(ngModel)]="nuevoEquipo.escudo"
+              placeholder="Ej: NuevoBoadilla.png"
+              class="form-control form-control-sm"
               style="min-width: 150px"
             />
           </td>
+
           <td>
             <input
               type="number"

@@ -1,0 +1,33 @@
+<div class="player-card" (mouseenter)="onMouseEnter()" (mouseleave)="onMouseLeave()">
+  <div class="media-container">
+    <img
+      class="card-image"
+      [src]="api.URL_IMAGENES + player.image"
+      [alt]="player.name"
+      width="300"
+      height="450"
+      loading="lazy"
+    />
+
+    <video
+      #videoPlayer
+      class="card-video"
+      [src]="player.video ? api.URL_IMAGENES + player.video : ''"
+      loop
+      muted
+      playsinline
+    ></video>
+  </div>
+
+  <div class="card-data">
+    <h3>{{ player.name }}</h3>
+    <p class="dato-fila">
+      <span class="etiqueta">Dorsal:</span>
+      <span class="valor-dorsal">{{ player.number }}</span>
+    </p>
+    <p class="dato-fila">
+      <span class="etiqueta">Posición:</span>
+      <span class="valor">{{ player.position }}</span>
+    </p>
+  </div>
+</div>

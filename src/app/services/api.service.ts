@@ -8,6 +8,8 @@ import { Observable } from 'rxjs';
 export class ApiService {
   private apiUrl = 'http://localhost:5000/api';
 
+  public readonly URL_IMAGENES = 'http://localhost:5000/uploads/';
+
   constructor(private http: HttpClient) {}
 
   // Método auxiliar para obtener el token guardado

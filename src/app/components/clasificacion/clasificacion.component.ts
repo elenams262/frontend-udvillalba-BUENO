@@ -32,9 +32,9 @@ export class ClasificacionComponent implements OnInit {
   modoEdicion: boolean = false;
 
   constructor(
-    private api: ApiService,
-    private authService: AuthService,
-    private cd: ChangeDetectorRef
+    public api: ApiService,
+    public authService: AuthService,
+    public cd: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {

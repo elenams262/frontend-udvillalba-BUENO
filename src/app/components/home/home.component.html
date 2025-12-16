@@ -1,1 +1,11 @@
+<section class="seccion-jugadoras">
+  <div class="container">
+    <h2 class="titulo-seccion">Nuestras Jugadoras</h2>
 
+    <div class="grid-jugadoras">
+      @for (jugadora of jugadoras; track jugadora.number) {
+      <app-player-card [player]="jugadora"></app-player-card>
+      }
+    </div>
+  </div>
+</section>
