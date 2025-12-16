@@ -129,6 +129,82 @@
           }
         </tr>
         }
+
+        <!-- FILA DE CREACIÓN (SOLO ADMIN Y MODO EDICIÓN) -->
+        @if (modoEdicion) {
+        <tr class="fila-creacion" style="background-color: #e8f8f5; border-top: 2px solid #2ecc71">
+          <td><span class="badge bg-success">+</span></td>
+          <td>
+            <input
+              type="text"
+              [(ngModel)]="nuevoEquipo.nombre"
+              placeholder="Nombre Equipo"
+              class="form-control form-control-sm"
+              style="min-width: 150px"
+            />
+          </td>
+          <td>
+            <input
+              type="number"
+              [(ngModel)]="nuevoEquipo.puntos"
+              class="form-control form-control-sm input-corto"
+              placeholder="PTS"
+            />
+          </td>
+          <td>
+            <input
+              type="number"
+              [(ngModel)]="nuevoEquipo.partidosJugados"
+              class="form-control form-control-sm input-corto"
+              placeholder="PJ"
+            />
+          </td>
+          <td>
+            <input
+              type="number"
+              [(ngModel)]="nuevoEquipo.partidosGanados"
+              class="form-control form-control-sm input-corto"
+              placeholder="PG"
+            />
+          </td>
+          <td>
+            <input
+              type="number"
+              [(ngModel)]="nuevoEquipo.partidosEmpatados"
+              class="form-control form-control-sm input-corto"
+              placeholder="PE"
+            />
+          </td>
+          <td>
+            <input
+              type="number"
+              [(ngModel)]="nuevoEquipo.partidosPerdidos"
+              class="form-control form-control-sm input-corto"
+              placeholder="PP"
+            />
+          </td>
+          <td>
+            <input
+              type="number"
+              [(ngModel)]="nuevoEquipo.golesFavor"
+              class="form-control form-control-sm input-corto"
+              placeholder="GF"
+            />
+          </td>
+          <td>
+            <input
+              type="number"
+              [(ngModel)]="nuevoEquipo.golesContra"
+              class="form-control form-control-sm input-corto"
+              placeholder="GC"
+            />
+          </td>
+          <td>-</td>
+          <td>
+            <button class="btn btn-sm btn-primary" (click)="crearEquipo()">➕</button>
+          </td>
+        </tr>
+        }
       </tbody>
     </table>
   </div>

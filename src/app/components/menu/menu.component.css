@@ -1,0 +1,100 @@
+.menu-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.header h2 {
+  font-size: 2.5rem;
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.header p {
+  color: #7f8c8d;
+  font-size: 1.1rem;
+}
+
+.table-container {
+  overflow-x: auto;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  background: white;
+}
+
+.menu-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 800px; /* Para asegurar que no se rompa en móviles muy pequeños */
+}
+
+.menu-table thead th {
+  background-color: #27ae60; /* Verde saludable */
+  color: white;
+  padding: 1.5rem;
+  text-align: left;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.menu-table thead th:first-child {
+  border-top-left-radius: 20px;
+}
+
+.menu-table thead th:last-child {
+  border-top-right-radius: 20px;
+}
+
+.menu-table tbody tr {
+  border-bottom: 1px solid #f0f0f0;
+  transition: all 0.3s ease;
+}
+
+.menu-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.menu-table tbody tr:hover {
+  background-color: #f9fbf9;
+  transform: scale(1.005);
+}
+
+.menu-table td {
+  padding: 1.5rem;
+  color: #555;
+  font-size: 1rem;
+  vertical-align: middle;
+}
+
+.dia-column {
+  font-weight: bold;
+  color: #27ae60;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  background-color: #fcfdfc;
+  width: 120px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .menu-container {
+    padding: 1rem;
+  }
+
+  .header h2 {
+    font-size: 2rem;
+  }
+
+  .menu-table td,
+  .menu-table th {
+    padding: 1rem;
+  }
+}

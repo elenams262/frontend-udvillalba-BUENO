@@ -129,6 +129,65 @@ export class ClasificacionComponent implements OnInit {
     });
   }
 
+  nuevoEquipo: Equipo = {
+    posicion: 0,
+    escudo: '',
+    nombre: '',
+    puntos: 0,
+    partidosJugados: 0,
+    partidosGanados: 0,
+    partidosEmpatados: 0,
+    partidosPerdidos: 0,
+    golesFavor: 0,
+    golesContra: 0,
+    forma: [],
+  };
+
+  crearEquipo() {
+    if (!this.nuevoEquipo.nombre.trim()) {
+      alert('⚠️ El nombre del equipo es obligatorio');
+      return;
+    }
+
+    // Mapeo para el backend
+    const datosBackend = {
+      equipo: this.nuevoEquipo.nombre, // Importante: el backend espera 'equipo'
+      puntos: this.nuevoEquipo.puntos,
+      partidosJugados: this.nuevoEquipo.partidosJugados,
+      partidosGanados: this.nuevoEquipo.partidosGanados,
+      partidosEmpatados: this.nuevoEquipo.partidosEmpatados,
+      partidosPerdidos: this.nuevoEquipo.partidosPerdidos,
+      GF: this.nuevoEquipo.golesFavor,
+      GC: this.nuevoEquipo.golesContra,
+      escudo: this.nuevoEquipo.escudo,
+    };
+
+    this.api.crearEquipo(datosBackend).subscribe({
+      next: () => {
+        alert('✅ Equipo añadido correctamente');
+        this.cargarDatos();
+        // Resetear formulario
+        this.nuevoEquipo = {
+          posicion: 0,
+          escudo: '',
+          nombre: '',
+          puntos: 0,
+          partidosJugados: 0,
+          partidosGanados: 0,
+          partidosEmpatados: 0,
+          partidosPerdidos: 0,
+          golesFavor: 0,
+          golesContra: 0,
+          forma: [],
+        };
+      },
+      error: (err) => {
+        console.error('Error al crear equipo:', err);
+        alert('❌ Error al crear el equipo. Revisa la consola.');
+      },
+    });
+  }
+
   // --- Estilos Visuales ---
   getClassForPosition(posicion: number): string {
     if (posicion <= 2) return 'ascenso-directo';

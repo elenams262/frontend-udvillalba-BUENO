@@ -3,6 +3,7 @@ import { HomeComponent } from './components/home/home.component';
 import { ProximoPartidoComponent } from './components/proximo-partido/proximo-partido.component';
 import { LoginComponent } from './auth/login.component';
 
+import { MenuComponent } from './components/menu/menu.component';
 import { ClasificacionComponent } from './components/clasificacion/clasificacion.component';
 
 export const routes: Routes = [
@@ -15,7 +16,7 @@ export const routes: Routes = [
 
   // ... resto de rutas (clasificacion, etc.) ...
   { path: 'clasificacion', component: ClasificacionComponent },
-  { path: 'menu', component: HomeComponent },
+  { path: 'menu', component: MenuComponent },
   { path: 'entrenamientos', component: HomeComponent },
   { path: 'extra', component: HomeComponent },
   { path: 'noticias', component: HomeComponent },

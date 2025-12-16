@@ -1,39 +1,198 @@
-/* Añadir al final de clasificacion.component.css */
+/* Estilos Premium para la Clasificación */
 
-.header-section {
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: center; /* Centrar todo el contenido horizontalmente */
+}
+
+/* Cabecera con Título y Botón */
+.header-section {
+  width: 100%;
+  display: flex;
+  justify-content: center; /* Centrar el título */
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 2rem;
+  position: relative;
 }
 
-.input-corto {
-  width: 60px; /* Hace los inputs pequeñitos para que no rompan la tabla */
+.header-section h2 {
+  font-family: 'Outfit', 'Inter', sans-serif; /* Tipografía moderna si está disponible */
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #1a1a1a;
   text-align: center;
-  padding: 2px;
+  margin: 0;
+  background: linear-gradient(45deg, #1a1a1a, #4a4a4a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-.escudo-img {
-  width: 30px;
-  height: 30px;
-  margin-right: 10px;
-  object-fit: contain;
+/* Botón flotante a la derecha o debajo según responsividad */
+.header-section .btn {
+  position: absolute;
+  right: 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.header-section .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Contenedor de la Tabla con estilo "Carta" */
+.table-responsive {
+  width: 100%;
+  max-width: 1000px; /* Limitar ancho para que no se estire demasiado */
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* Sombra elegante */
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.table {
+  margin-bottom: 0; /* Quitar margen default de bootstrap */
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Cabecera de la Tabla */
+.table thead th {
+  background: #2c3e50; /* Color oscuro profesional */
+  color: white;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  padding: 16px 12px;
+  border: none;
+  vertical-align: middle;
+}
+
+.table tbody td {
+  padding: 16px 12px;
+  vertical-align: middle;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+/* Filas */
+.table tbody tr {
+  transition: background-color 0.2s ease;
+}
+
+.table tbody tr:hover {
+  background-color: #f8f9fa; /* Hover sutil */
+}
+
+/* Columnas Específicas */
+.posicion {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #555;
+  text-align: center;
+  width: 60px;
 }
 
 .equipo-col {
   display: flex;
   align-items: center;
-  font-weight: 500;
+  font-weight: 600;
+  color: #2c3e50;
 }
 
-/* Colores para ascenso/descenso */
+.escudo-img {
+  width: 32px;
+  height: 32px;
+  margin-right: 12px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.1));
+}
+
+.nombre-equipo {
+  font-size: 1rem;
+}
+
+/* Inputs de edición */
+.input-corto {
+  width: 55px;
+  text-align: center;
+  padding: 4px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+.input-corto:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+/* Estado de clasificación (Colores laterales) */
+/* Usamos box-shadow inset para un efecto moderno en lugar de border */
 .ascenso-directo {
-  border-left: 4px solid #2ecc71;
-  background-color: #eafaf1;
+  background: linear-gradient(90deg, rgba(46, 204, 113, 0.1) 0%, transparent 100%);
+  border-left: 5px solid #2ecc71;
 }
+
 .playoff {
-  border-left: 4px solid #f1c40f;
+  background: linear-gradient(90deg, rgba(241, 196, 15, 0.1) 0%, transparent 100%);
+  border-left: 5px solid #f1c40f;
 }
+
 .descenso {
-  border-left: 4px solid #e74c3c;
+  background: linear-gradient(90deg, rgba(231, 76, 60, 0.1) 0%, transparent 100%);
+  border-left: 5px solid #e74c3c;
+}
+
+/* Badges de Forma (G E P) */
+.forma-container {
+  display: flex;
+  gap: 4px;
+}
+
+.badge {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: bold;
+  color: white;
+}
+
+.bg-success {
+  background-color: #2ecc71;
+}
+.bg-warning {
+  background-color: #f1c40f;
+  color: #333;
+}
+.bg-danger {
+  background-color: #e74c3c;
+}
+.bg-secondary {
+  background-color: #95a5a6;
+}
+
+/* Responsive para Botón */
+@media (max-width: 768px) {
+  .header-section {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .header-section .btn {
+    position: static; /* Ya no flota */
+  }
 }
