@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { ProximoPartidoComponent } from './components/proximo-partido/proximo-partido.component';
-import { LoginComponent } from './auth/login/login.component';
+import { LoginComponent } from './auth/login.component';
 
 export const routes: Routes = [
   // CAMBIO AQUÍ: Ahora redirige a 'login' en vez de a 'inicio'

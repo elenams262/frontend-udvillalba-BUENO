@@ -1,0 +1,39 @@
+/* Añadir al final de clasificacion.component.css */
+
+.header-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.input-corto {
+  width: 60px; /* Hace los inputs pequeñitos para que no rompan la tabla */
+  text-align: center;
+  padding: 2px;
+}
+
+.escudo-img {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+  object-fit: contain;
+}
+
+.equipo-col {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+}
+
+/* Colores para ascenso/descenso */
+.ascenso-directo {
+  border-left: 4px solid #2ecc71;
+  background-color: #eafaf1;
+}
+.playoff {
+  border-left: 4px solid #f1c40f;
+}
+.descenso {
+  border-left: 4px solid #e74c3c;
+}

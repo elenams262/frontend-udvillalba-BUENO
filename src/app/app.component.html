@@ -1,5 +1,10 @@
 <nav>
   <ul>
+    <li class="logo-container">
+      <a routerLink="/inicio">
+        <img src="/assets/escudos/logo-udvillalba.png" alt="UD Villalba" />
+      </a>
+    </li>
     <li><a routerLink="/inicio" routerLinkActive="activo">Inicio</a></li>
     <li><a routerLink="/jornada" routerLinkActive="activo">Jornada</a></li>
     <li><a routerLink="/clasificacion" routerLinkActive="activo">Clasificación</a></li>
@@ -9,7 +14,4 @@
     <li><a routerLink="/login" routerLinkActive="activo">Login</a></li>
   </ul>
 </nav>
-
-<hr />
-
 <router-outlet></router-outlet>

@@ -1,1 +1,135 @@
-<p>clasificacion works!</p>
+<div class="container">
+  <div class="header-section">
+    <h2>Clasificación</h2>
+
+    @if (esAdmin) {
+    <button class="btn btn-warning" (click)="toggleEdicion()">
+      ⚙️ {{ modoEdicion ? 'Finalizar Edición' : 'Editar Clasificación' }}
+    </button>
+    }
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Pos</th>
+          <th>Equipo</th>
+          <th>PTS</th>
+          <th>PJ</th>
+          <th>PG</th>
+          <th>PE</th>
+          <th>PP</th>
+          <th>GF</th>
+          <th>GC</th>
+          <th>Forma</th>
+          @if (modoEdicion) {
+          <th>Acciones</th>
+          }
+        </tr>
+      </thead>
+      <tbody>
+        @for (equipo of clasificacion; track equipo._id) {
+        <tr [class]="getClassForPosition(equipo.posicion)">
+          <td class="posicion">{{ equipo.posicion }}</td>
+
+          <td class="equipo-col">
+            @if (equipo.escudo) {
+            <img [src]="equipo.escudo" alt="Escudo" class="escudo-img" />
+            }
+            <span class="nombre-equipo">{{ equipo.nombre }}</span>
+          </td>
+
+          <td class="fw-bold">{{ equipo.puntos }}</td>
+
+          <td>
+            @if (modoEdicion) {
+            <input
+              type="number"
+              [(ngModel)]="equipo.partidosJugados"
+              class="form-control form-control-sm input-corto"
+            />
+            } @else {
+            {{ equipo.partidosJugados }}
+            }
+          </td>
+
+          <td>
+            @if (modoEdicion) {
+            <input
+              type="number"
+              [(ngModel)]="equipo.partidosGanados"
+              class="form-control form-control-sm input-corto"
+            />
+            } @else {
+            {{ equipo.partidosGanados }}
+            }
+          </td>
+
+          <td>
+            @if (modoEdicion) {
+            <input
+              type="number"
+              [(ngModel)]="equipo.partidosEmpatados"
+              class="form-control form-control-sm input-corto"
+            />
+            } @else {
+            {{ equipo.partidosEmpatados }}
+            }
+          </td>
+
+          <td>
+            @if (modoEdicion) {
+            <input
+              type="number"
+              [(ngModel)]="equipo.partidosPerdidos"
+              class="form-control form-control-sm input-corto"
+            />
+            } @else {
+            {{ equipo.partidosPerdidos }}
+            }
+          </td>
+
+          <td>
+            @if (modoEdicion) {
+            <input
+              type="number"
+              [(ngModel)]="equipo.golesFavor"
+              class="form-control form-control-sm input-corto"
+            />
+            } @else {
+            {{ equipo.golesFavor }}
+            }
+          </td>
+
+          <td>
+            @if (modoEdicion) {
+            <input
+              type="number"
+              [(ngModel)]="equipo.golesContra"
+              class="form-control form-control-sm input-corto"
+            />
+            } @else {
+            {{ equipo.golesContra }}
+            }
+          </td>
+
+          <td>
+            <div class="forma-container">
+              @for (resultado of equipo.forma; track $index) {
+              <span class="badge" [ngClass]="getFormaClass(resultado)">{{ resultado }}</span>
+              }
+            </div>
+          </td>
+
+          @if (modoEdicion) {
+          <td>
+            <button class="btn btn-sm btn-success" (click)="guardarCambios(equipo)">💾</button>
+          </td>
+          }
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>

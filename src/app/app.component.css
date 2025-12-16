@@ -1,8 +1,8 @@
 /* La barra de navegación en sí */
 nav {
-  background-color: #333; /* Fondo gris oscuro */
+  background-color: white; /* Fondo blanco */
   padding: 0 20px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra suave */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave */
 }
 
 /* La lista (ul) */
@@ -11,44 +11,112 @@ nav ul {
   margin: 0;
   padding: 0;
   display: flex; /* Esto es MÁGICO: pone los elementos en horizontal */
-  align-items: center; /* Centra verticalmente */
-  height: 60px; /* Altura de la barra */
+  justify-content: center; /* Centra los elementos horizontalmente */
+  align-items: flex-end; /* "Bajamos" los elementos al borde inferior */
+  height: 70px; /* Reducido aún más: 40px */
+  position: relative; /* Necesario para que el hijo absoluto se posicione respecto a esto */
+  width: 100%; /* Asegura que ocupe todo el ancho disponible */
 }
 
 /* Los elementos individuales (li) */
-nav ul li {
-  /* Si quieres empujar el Login a la derecha, descomenta la siguiente línea en el LI del login */
-  /* margin-left: auto; */
-}
+/* nav ul li { } eliminado por estar vacío */
 
 /* Los enlaces (a) */
 nav ul li a {
   text-decoration: none; /* Quita el subrayado feo */
-  color: white; /* Letra blanca */
+  color: #333; /* Letra oscura */
   font-family: sans-serif;
+  font-size: 20px;
   font-weight: bold;
-  padding: 0 15px; /* Espacio entre palabras */
-  height: 60px;
+  padding: 0 15px 8px 15px; /* Reducimos padding bottom para que el texto baje más */
   display: flex;
   align-items: center;
-  transition: background-color 0.3s; /* Suaviza el cambio de color */
+  transition: color 0.3s, background-color 0.3s; /* Suaviza el cambio */
 }
 
 /* Efecto al pasar el ratón por encima (Hover) */
 nav ul li a:hover {
-  background-color: #555; /* Se aclara un poco al pasar el ratón */
-  color: #4caf50; /* Texto verde al pasar el ratón */
+  background-color: transparent; /* Quitamos fondo gris al hover para que quede más limpio */
+  color: #27ae60; /* Verde UD Villalba */
 }
 
 /* Estilo para la página activa (cuando estás dentro) */
 /* Nota: asegúrate de que en el HTML pusiste routerLinkActive="activo" */
 .activo {
-  border-bottom: 4px solid #4caf50; /* Una línea verde debajo de la opción activa */
-  background-color: #222;
+  border-bottom: 3px solid #27ae60; /* Línea verde un poco más fina */
+  color: #27ae60; /* Texto también verde */
+  background-color: transparent;
 }
 
-/* Empujar el Login a la derecha (Opcional) */
-/* Si quieres que el último elemento se vaya a la derecha del todo: */
+/* Empujar el Login a la derecha */
+/* Al usar position absolute y right 0, se coloca al final del contenedor UL */
 nav ul li:last-child {
-  margin-left: auto;
+  position: absolute;
+  right: 0;
+  /* Centrado vertical del contenedor li respecto al ul */
+  display: flex;
+  align-items: center; /* Esto centra verticalmente el botón dentro de los 40px */
+  height: 40px;
+  padding-bottom: 0; /* Reset del padding implícito si lo hubiera */
+}
+
+/* Estilos Específicos para el Botón Login */
+nav ul li:last-child a {
+  background-color: #27ae60; /* Verde corporativo */
+  color: white; /* Texto blanco */
+  height: auto;
+  padding: 6px 20px; /* Botón más compacto para caber en 40px */
+  border-radius: 20px;
+  line-height: normal;
+  margin-right: 0;
+  transition: all 0.3s ease;
+  /* Importante: evitar que herede el padding-bottom del selector genérico */
+  padding-bottom: 6px;
+}
+
+/* Hover específico para el botón Login */
+nav ul li:last-child a:hover {
+  background-color: #219150; /* Verde más oscuro */
+  color: white; /* Aseguramos texto blanco */
+  transform: translateY(-2px); /* Pequeño efecto de elevación */
+  box-shadow: 0 4px 10px rgba(39, 174, 96, 0.3); /* Sombra verde difusa */
+}
+
+/* Override para que no coja el estilo "activo" de línea inferior */
+nav ul li:last-child a.activo {
+  border-bottom: none;
+  background-color: #27ae60;
+  color: white;
+}
+
+/* --- LOGO A LA IZQUIERDA --- */
+.logo-container {
+  position: absolute;
+  left: 30px;
+  top: 15px;
+  height: 100%;
+  padding-bottom: 0;
+  display: flex;
+  align-items: center; /* Centrar verticalmente la imagen */
+}
+
+/* Reset de estilos del enlace para el logo */
+.logo-container a {
+  padding: 0 !important; /* Quitamos el padding de los enlaces de texto */
+  background-color: transparent !important;
+  border-bottom: none !important;
+  display: flex !important;
+  align-items: center;
+}
+
+/* Estilo de la imagen */
+.logo-container img {
+  height: 90px; /* Un tamaño adecuado para el nav de 70px */
+  width: auto;
+  transition: transform 0.3s ease; /* Transición suave para el zoom */
+}
+
+/* Efecto Zoom al pasar el ratón */
+.logo-container a:hover img {
+  transform: scale(1.15); /* Aumenta un 15% su tamaño */
 }

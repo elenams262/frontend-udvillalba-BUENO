@@ -41,7 +41,23 @@ export class ApiService {
   getClasificacion(): Observable<any> {
     return this.http.get(`${this.apiUrl}/clasificacion`);
   }
+  // --- GESTIÓN CLASIFICACIÓN (Solo Admin) ---
 
+  // Crear un nuevo equipo
+  crearEquipo(equipo: any): Observable<any> {
+    // Importante: pasamos this.getHeaders() para que el backend sepa que somos Admin
+    return this.http.post(`${this.apiUrl}/clasificacion`, equipo, this.getHeaders());
+  }
+
+  // Actualizar datos de un equipo (puntos, goles, etc.)
+  actualizarEquipo(id: string, equipo: any): Observable<any> {
+    return this.http.put(`${this.apiUrl}/clasificacion/${id}`, equipo, this.getHeaders());
+  }
+
+  // Eliminar un equipo de la tabla
+  eliminarEquipo(id: string): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/clasificacion/${id}`, this.getHeaders());
+  }
   // --- PARTIDOS ---
 
   getProximoPartido(): Observable<any> {
