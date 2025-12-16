@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-registro',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterLink],
   templateUrl: './registro.component.html',
   styleUrl: './registro.component.css',
 })
@@ -36,11 +36,12 @@ export class RegistroComponent {
 
     this.api.registro(datosParaEnviar).subscribe({
       next: (res) => {
-        alert('¡Usuario creado con éxito!');
-        if (res.token) {
-          localStorage.setItem('token', res.token);
-        }
-        this.router.navigate(['/home']);
+        alert('¡Usuario creado con éxito! Por favor, inicia sesión.');
+
+        // No guardamos el token automáticamente para obligar a hacer login
+        // if (res.token) { localStorage.setItem('token', res.token); }
+
+        this.router.navigate(['/login']);
       },
       error: (err) => {
         console.error(err);

@@ -44,7 +44,7 @@ input {
 .btn-primary {
   width: 100%;
   padding: 10px;
-  background-color: #3498db;
+  background-color: #47db34;
   color: white;
   border: none;
   border-radius: 5px;
@@ -54,11 +54,25 @@ input {
 }
 
 .btn-primary:hover {
-  background-color: #2980b9;
+  background-color: #60b137;
 }
 
 .error-msg {
   color: red;
   margin-top: 10px;
+  font-size: 0.9rem;
+}
+
+/* Login Link Styles (Reused from login style concept) */
+.login-link {
+  margin-top: 20px;
+  text-align: center;
+  border-top: 1px solid #eee;
+  padding-top: 15px;
+}
+
+.login-link p {
+  margin: 0 0 10px;
+  color: #666;
   font-size: 0.9rem;
 }

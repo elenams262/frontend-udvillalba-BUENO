@@ -5,6 +5,7 @@ import { LoginComponent } from './auth/login.component';
 
 import { MenuComponent } from './components/menu/menu.component';
 import { ClasificacionComponent } from './components/clasificacion/clasificacion.component';
+import { RegistroComponent } from './components/registro/registro.component';
 
 export const routes: Routes = [
   // CAMBIO AQUÍ: Ahora redirige a 'login' en vez de a 'inicio'
@@ -20,4 +21,5 @@ export const routes: Routes = [
   { path: 'entrenamientos', component: HomeComponent },
   { path: 'extra', component: HomeComponent },
   { path: 'noticias', component: HomeComponent },
+  { path: 'registro', component: RegistroComponent },
 ];

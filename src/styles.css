@@ -1,6 +1,32 @@
 body {
-  background-color: rgb(16, 173, 50);
   margin: 0;
+  min-height: 100vh;
+  position: relative;
+  /* Removed static background color */
+}
+
+/* GLOBAL BACKGROUND IMAGE */
+body::before {
+  content: '';
+  position: fixed;
+  top: 100px; /* Empieza justo debajo del nav */
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 100px); /* Ocupa el resto de la pantalla */
+  /* Image path found in assets/recursos/ */
+  background-image: url('assets/recursos/infantil-femenino.png');
+  background-size: cover;
+  background-position: top center; /* Alineamos arriba para que no se corten las cabezas */
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* Se queda fija */
+  z-index: -9999; /* Stay behind everything */
+  transition: filter 0.5s ease; /* Smooth transition for blur */
+}
+
+/* Class to trigger blur on login/register pages */
+body.auth-mode::before {
+  filter: blur(8px) brightness(0.9);
+  -webkit-filter: blur(8px) brightness(0.9);
 }
 .logo {
   width: 90px;
@@ -16,7 +42,10 @@ body {
 /* NAVBAR */
 nav {
   height: 100px;
+  background-color: white; /* Aseguramos fondo blanco en el hueco superior */
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  position: relative; /* Asegura que esté por encima si es necesario */
+  z-index: 100;
 }
 
 .menu a {

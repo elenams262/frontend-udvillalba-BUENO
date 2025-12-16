@@ -62,3 +62,35 @@ input {
   margin-top: 10px;
   font-size: 0.9rem;
 }
+
+/* Registro Link */
+.register-link {
+  margin-top: 20px;
+  text-align: center;
+  border-top: 1px solid #eee;
+  padding-top: 15px;
+}
+
+.register-link p {
+  margin: 0 0 10px;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.btn-secondary {
+  width: 100%;
+  padding: 10px;
+  background-color: transparent;
+  color: #27ae60;
+  border: 2px solid #27ae60;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background-color: #27ae60;
+  color: white;
+}
