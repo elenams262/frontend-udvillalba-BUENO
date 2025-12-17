@@ -99,7 +99,7 @@ input {
 /* --- RESPONSIVE FORMULARIOS --- */
 @media (max-width: 768px) {
   .auth-container {
-    padding-top: 40px; /* Mucho menos margen arriba */
+    padding-top: 150px; /* Mucho menos margen arriba */
     align-items: center; /* Centrado vertical */
     min-height: auto;
     padding-bottom: 40px;
