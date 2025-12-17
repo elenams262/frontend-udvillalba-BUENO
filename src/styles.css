@@ -1,89 +1,49 @@
+/* src/styles.css */
+
 body {
   margin: 0;
   min-height: 100vh;
   position: relative;
-  /* Removed static background color */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* GLOBAL BACKGROUND IMAGE */
+/* --- FONDO GLOBAL --- */
+/* Esto asegura que la imagen cubra TODO, incluso debajo del menú */
 body::before {
   content: '';
   position: fixed;
-  top: 100px; /* Empieza justo debajo del nav */
+  top: 0;
   left: 0;
   width: 100%;
-  height: calc(100vh - 100px); /* Ocupa el resto de la pantalla */
-  /* Image path found in assets/recursos/ */
-  background-image: url('assets/recursos/infantil-femenino.png');
+  height: 100vh; /* Altura completa de la ventana */
+
+  /* Tu imagen de fondo para PC */
+  background-image: url('/assets/recursos/infantil-femenino.png');
   background-size: cover;
-  background-position: top center; /* Alineamos arriba para que no se corten las cabezas */
+  background-position: top center;
   background-repeat: no-repeat;
-  background-attachment: fixed; /* Se queda fija */
-  z-index: -9999; /* Stay behind everything */
-  transition: filter 0.5s ease; /* Smooth transition for blur */
+  z-index: -1; /* Detrás de todo */
 }
 
-/* Class to trigger blur on login/register pages */
+/* Modo borroso para login/registro */
 body.auth-mode::before {
   filter: blur(8px) brightness(0.9);
   -webkit-filter: blur(8px) brightness(0.9);
 }
-.logo {
-  width: 90px;
-  height: auto;
-  transition: transform 0.3s ease-in-out;
-  display: block;
-}
 
-.logo:hover {
-  transform: scale(1.2);
-}
-
-/* NAVBAR */
-nav {
-  height: 100px;
-  background-color: white; /* Aseguramos fondo blanco en el hueco superior */
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-  position: relative; /* Asegura que esté por encima si es necesario */
-  z-index: 100;
-}
-
-.menu a {
-  text-decoration: none;
-  color: inherit !important;
-}
-
-.menu a:hover {
-  color: rgb(16, 173, 50) !important; /* Color verde al pasar el ratón, opcional */
-  text-decoration: none;
-}
-.login-link {
-  background-color: rgb(16, 173, 50);
-  color: white;
-  padding: 5px 15px;
-  border-radius: 20px;
-  transition: all 0.3s ease;
-}
-
-.login-link:hover {
-  background-color: rgb(13, 140, 40);
-  transform: scale(1.05);
-  color: white !important;
-}
-
+/* Títulos Globales (H2) */
 h2 {
-  color: white; /* Texto blanco en lugar de verde */
-  font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  font-weight: 800; /* Extra bold */
+  color: white;
+  font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 3px;
   margin-bottom: 1.5rem;
   padding-bottom: 10px;
   position: relative;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.75); /* Sombra difuminada pero visible */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.75);
 }
 
-/* Línea decorativa inferior para todos los H2 */
+/* Línea verde debajo de los títulos */
 h2::after {
   content: '';
   position: absolute;
@@ -92,131 +52,15 @@ h2::after {
   transform: translateX(-50%);
   width: 80px;
   height: 4px;
-  background-color: rgb(16, 173, 50); /* Verde para la línea inferior */
+  background-color: rgb(16, 173, 50);
   border-radius: 2px;
 }
 
-/* Ajuste específico para cuando el texto es blanco (Bootstrap .text-white) */
-h2.text-white {
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra más fuerte para legibilidad sobre fondo/imagen */
-}
-
-a {
-  color: rgb(0, 0, 0);
-}
-button {
-  background-color: rgb(16, 173, 50);
-  border: none;
-  border-radius: 18px;
-  margin: 5px;
-  box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.414);
-}
-
-footer.bg-light {
-  background-color: #f8f9fa !important;
-}
-
-.text-yellow-brand {
-  color: #ffcc00 !important; /* Amarillo "escudo" */
-  text-shadow: 3px 3px 4px rgba(0, 0, 0, 0.75); /* Sombra difuminada y no tan negra */
-}
-footer .list-inline-item a:hover {
-  text-decoration: underline !important;
-  color: #212529 !important;
-}
-/* GLOBAL NEWS CARD STYLES */
-/* Animaciones de entrada */
-.fade-in {
-  animation: fadeIn 0.8s ease-out forwards;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Estilos de la tarjeta */
-.card-noticia {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border-radius: 12px;
-  overflow: hidden;
-  background-color: #fff;
-}
-
-.card-noticia:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
-}
-
-/* Imagen */
-.card-img-wrapper {
-  height: 200px;
-  overflow: hidden;
-  background-color: #f0f0f0;
-}
-
-.card-img-top {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s ease;
-}
-
-.card-noticia:hover .card-img-top {
-  transform: scale(1.05);
-}
-
-/* Tipografía */
-.card-title {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  letter-spacing: -0.5px;
-}
-
-footer .list-inline-item a:hover {
-  text-decoration: underline !important;
-  color: #212529 !important;
-}
-
-/* --- FONDO GLOBAL (Moved from Home) --- */
-.header-image-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 800px;
-  z-index: -1; /* Detrás del contenido */
-  overflow: hidden;
-}
-
-.header-image {
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-  object-position: center top;
-  transform: scale(1.05);
-  transform-origin: top;
-}
-
-/* Contenedor principal: Por defecto con poco padding (para páginas normales) */
-.main-container {
-  width: 100%;
-  padding-bottom: 2rem;
-  padding-top: 40px; /* Reducido para subir los títulos (navbar es 100px) */
-  position: relative;
-}
-
-/* Ajuste para pantallas pequeñas */
+/* --- RESPONSIVE: CAMBIO DE FONDO EN MÓVIL --- */
 @media (max-width: 768px) {
-  .header-image-container {
-    height: 400px;
-  }
-  .main-container {
-    padding-top: 120px;
+  body::before {
+    /* Aquí pones la imagen vertical para el móvil */
+    background-image: url('/assets/recursos/fondo-responsive.png') !important;
+    background-position: center center;
   }
 }

@@ -16,6 +16,9 @@ export class AppComponent implements OnInit {
   title = 'frontend-futbol';
   partido: any = null;
 
+  // Tu variable para controlar el menú
+  menuVisible: boolean = false;
+
   constructor(private api: ApiService, private router: Router) {}
 
   ngOnInit() {
@@ -43,5 +46,17 @@ export class AppComponent implements OnInit {
         console.error('Error:', err);
       },
     });
+  }
+
+  // --- FUNCIONES AÑADIDAS PARA EL MENÚ RESPONSIVE ---
+
+  // Alternar entre abierto y cerrado (para el botón hamburguesa)
+  toggleMenu() {
+    this.menuVisible = !this.menuVisible;
+  }
+
+  // Cerrar explícitamente (para cuando haces clic en un enlace)
+  cerrarMenu() {
+    this.menuVisible = false;
   }
 }

@@ -2,31 +2,35 @@
 .container-center {
   display: flex;
   justify-content: center;
-  align-items: flex-start; /* Alineado arriba pero centrado horizontalmente, o center para centrar total */
-  padding: 40px 20px;
+  align-items: flex-start;
+  padding: 20px;
   width: 100%;
-  margin-top: 100px; /* Evitar que el navbar tape el contenido */
+  margin-top: 50px;
+
+  /* --- CORRECCIÓN AQUÍ --- */
+  /* El menú mide unos 80-100px, así que empujamos 140px para que se vea bien */
+  padding-top: 100px;
+  min-height: 100vh; /* Para que ocupe al menos toda la pantalla */
+  box-sizing: border-box;
 }
 
 /* --- TARJETA DEL PARTIDO --- */
 .match-card {
   background-color: white;
   border: 1px solid #e0e0e0;
-  border-radius: 15px; /* Bordes redondeados */
+  border-radius: 15px;
   padding: 30px;
   display: inline-block;
   min-width: 320px;
-  max-width: 500px;
+  max-width: 500px; /* Límite de ancho para que no se vea gigante en PC */
+  width: 100%; /* En móvil ocupa todo el ancho disponible */
 
-  /* Sombra suave para dar efecto de profundidad (3D) */
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-
-  /* Animación suave si pasas el ratón por encima */
   transition: transform 0.3s ease;
 }
 
 .match-card:hover {
-  transform: translateY(-5px); /* La tarjeta "flota" un poco al pasar el ratón */
+  transform: translateY(-5px);
 }
 
 /* Títulos dentro de la tarjeta */
@@ -34,94 +38,62 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 0px;
-}
-
-.match-card h2 {
-  color: #3498db; /* Azul corporativo */
-  margin-top: 0;
-  font-size: 1.8rem;
-  margin-bottom: 0;
-}
-
-.match-card h3 {
-  color: #7f8c8d; /* Gris para subtítulos */
-  font-weight: normal;
-  border-bottom: 2px solid #f0f0f0; /* Línea separadora sutil */
-  padding-bottom: 10px;
   margin-bottom: 20px;
+  flex-wrap: wrap; /* Para que en móvil los botones bajen si no caben */
+  gap: 10px;
 }
 
-/* Texto de los detalles */
+.header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #2c3e50;
+}
+
+/* Botones de admin */
+.admin-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+/* --- RESPONSIVE FIX (Añadido extra por seguridad) --- */
+@media (max-width: 768px) {
+  .container-center {
+    padding-top: 200px; /* En móvil el menú es un poco distinto, ajustamos */
+  }
+
+  .match-card {
+    padding: 15px; /* Menos relleno en móvil */
+  }
+}
+
+/* ... Resto de tus estilos (match-details, status-home, etc.) déjalos igual ... */
 .match-details {
   font-size: 1.1rem;
-  line-height: 1.8; /* Espacio entre líneas para leer mejor */
+  line-height: 1.8;
   color: #333;
-  text-align: left; /* Alineado a la izquierda queda más ordenado */
+  text-align: left;
   margin-bottom: 20px;
 }
 
-/* Estilos para textos de estado (Casa/Fuera) */
 .status-home {
-  color: #27ae60; /* Verde */
+  color: #27ae60;
   font-weight: bold;
   font-size: 1.2rem;
   padding: 10px;
-  background-color: #eafaf1; /* Fondo verde muy clarito */
+  background-color: #eafaf1;
   border-radius: 8px;
 }
 
 .status-away {
-  color: #c0392b; /* Rojo */
+  color: #c0392b;
   font-weight: bold;
   font-size: 1.2rem;
   padding: 10px;
-  background-color: #fdedec; /* Fondo rojo muy clarito */
+  background-color: #fdedec;
   border-radius: 8px;
 }
 
-/* Estilos del formulario de edición */
 .edit-form {
   margin-top: 15px;
   text-align: left;
-}
-
-.edit-form label {
-  font-weight: 600;
-  color: #34495e;
-  font-size: 0.9rem;
-  margin-bottom: 5px;
-  display: block;
-}
-
-.form-control {
-  width: 100%;
-  padding: 8px 12px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 1rem;
-  transition: border-color 0.3s;
-}
-
-.form-control:focus {
-  border-color: #3498db;
-  outline: none;
-}
-
-.mb-2 {
-  margin-bottom: 0.5rem;
-}
-.mb-3 {
-  margin-bottom: 1rem;
-}
-.w-100 {
-  width: 100%;
-}
-
-/* Mensaje de carga */
-.loading-msg {
-  font-style: italic;
-  color: #7f8c8d;
-  font-size: 1.2rem;
-  margin-top: 50px;
 }

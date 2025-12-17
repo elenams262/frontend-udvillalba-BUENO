@@ -1,18 +1,25 @@
 <nav>
-  <ul>
-    <li class="logo-container">
-      <a routerLink="/inicio">
-        <img src="/assets/escudos/logo-udvillalba.png" alt="UD Villalba" />
-      </a>
+  <div class="logo-container">
+    <a routerLink="/inicio" (click)="cerrarMenu()">
+      <img src="/assets/escudos/logo-udvillalba.png" alt="UD Villalba" />
+    </a>
+  </div>
+
+  <button class="hamburger-btn" (click)="toggleMenu()">@if (!menuVisible) { ☰ } @else { ✕ }</button>
+
+  <ul [class.show]="menuVisible">
+    <li><a routerLink="/inicio" routerLinkActive="activo" (click)="cerrarMenu()">Inicio</a></li>
+    <li><a routerLink="/jornada" routerLinkActive="activo" (click)="cerrarMenu()">Jornada</a></li>
+    <li>
+      <a routerLink="/clasificacion" routerLinkActive="activo" (click)="cerrarMenu()"
+        >Clasificación</a
+      >
     </li>
-    <li><a routerLink="/inicio" routerLinkActive="activo">Inicio</a></li>
-    <li><a routerLink="/jornada" routerLinkActive="activo">Jornada</a></li>
-    <li><a routerLink="/clasificacion" routerLinkActive="activo">Clasificación</a></li>
-    <li><a routerLink="/menu" routerLinkActive="activo">Menú</a></li>
-    <!-- <li><a routerLink="/entrenamientos" routerLinkActive="activo">Entrenamientos Extra</a></li> -->
-    <li><a routerLink="/tienda" routerLinkActive="activo">Tienda</a></li>
-    <li><a routerLink="/login" routerLinkActive="activo">Login</a></li>
+    <li><a routerLink="/menu" routerLinkActive="activo" (click)="cerrarMenu()">Menú</a></li>
+    <li><a routerLink="/tienda" routerLinkActive="activo" (click)="cerrarMenu()">Tienda</a></li>
+    <li><a routerLink="/login" routerLinkActive="activo" (click)="cerrarMenu()">Login</a></li>
   </ul>
 </nav>
+
 <router-outlet></router-outlet>
 <app-footer></app-footer>

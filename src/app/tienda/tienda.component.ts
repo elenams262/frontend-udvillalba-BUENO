@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ApiService } from '../services/api.service';
 import { CartService } from '../services/cart.service';
@@ -24,7 +24,7 @@ export class TiendaComponent implements OnInit {
   cargando: boolean = true;
   productoAgregadoId: string | null = null; // Para mostrar feedback
 
-  constructor(public api: ApiService, private cart: CartService) {}
+  constructor(public api: ApiService, private cart: CartService, private cd: ChangeDetectorRef) {}
 
   ngOnInit(): void {
     this.cargarProductos();
@@ -35,6 +35,7 @@ export class TiendaComponent implements OnInit {
       next: (data) => {
         this.productos = data;
         this.cargando = false;
+        this.cd.detectChanges(); // Forzar actualización de vista
       },
       error: (err) => {
         console.error('Error cargando productos:', err);
@@ -63,6 +64,7 @@ export class TiendaComponent implements OnInit {
           },
         ];
         this.cargando = false;
+        this.cd.detectChanges(); // Forzar actualización de vista
       },
     });
   }

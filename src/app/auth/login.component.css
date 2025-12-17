@@ -96,3 +96,22 @@ input {
   background-color: #27ae60;
   color: white;
 }
+/* --- RESPONSIVE FORMULARIOS --- */
+@media (max-width: 768px) {
+  .auth-container {
+    padding-top: 40px; /* Mucho menos margen arriba */
+    align-items: center; /* Centrado vertical */
+    min-height: auto;
+    padding-bottom: 40px;
+  }
+
+  .auth-card {
+    width: 90%; /* La tarjeta ocupa el 90% del ancho del móvil */
+    padding: 1.5rem;
+    margin: 0 auto; /* Centrado */
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+}

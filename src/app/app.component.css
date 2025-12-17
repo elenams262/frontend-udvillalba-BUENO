@@ -1,125 +1,159 @@
-/* La barra de navegación en sí */
+/* src/app/app.component.css */
+
+/* --- BARRA DE NAVEGACIÓN (PC) --- */
 nav {
-  background-color: white; /* Fondo blanco */
+  background-color: white;
   padding: 0 20px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave */
-  position: fixed;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  position: fixed; /* Fijo arriba */
   top: 0;
+  left: 0;
   width: 100%;
-}
-
-/* La lista (ul) */
-nav ul {
-  list-style-type: none; /* Quita los puntos negros */
-  margin: 0;
-  padding: 0;
-  display: flex; /* Esto es MÁGICO: pone los elementos en horizontal */
-  justify-content: center; /* Centra los elementos horizontalmente */
-  align-items: flex-end; /* "Bajamos" los elementos al borde inferior */
-  height: 70px; /* Reducido aún más: 40px */
-  position: relative; /* Necesario para que el hijo absoluto se posicione respecto a esto */
-  width: 100%; /* Asegura que ocupe todo el ancho disponible */
-}
-
-/* Los elementos individuales (li) */
-/* nav ul li { } eliminado por estar vacío */
-
-/* Los enlaces (a) */
-nav ul li a {
-  text-decoration: none; /* Quita el subrayado feo */
-  color: #333; /* Letra oscura */
-  font-family: sans-serif;
-  font-size: 20px;
-  font-weight: bold;
-  padding: 0 15px 8px 15px; /* Reducimos padding bottom para que el texto baje más */
+  height: 100px; /* Altura fija */
+  z-index: 1000; /* Siempre encima de todo */
   display: flex;
   align-items: center;
-  transition: color 0.3s, background-color 0.3s; /* Suaviza el cambio */
+  justify-content: center; /* Centramos el contenido principal */
+  box-sizing: border-box; /* Para que el padding no rompa el ancho */
 }
 
-/* Efecto al pasar el ratón por encima (Hover) */
-nav ul li a:hover {
-  background-color: transparent; /* Quitamos fondo gris al hover para que quede más limpio */
-  color: #27ae60; /* Verde UD Villalba */
-}
-
-/* Estilo para la página activa (cuando estás dentro) */
-/* Nota: asegúrate de que en el HTML pusiste routerLinkActive="activo" */
-.activo {
-  border-bottom: 3px solid #27ae60; /* Línea verde un poco más fina */
-  color: #27ae60; /* Texto también verde */
-  background-color: transparent;
-}
-
-/* Empujar el Login a la derecha */
-/* Al usar position absolute y right 0, se coloca al final del contenedor UL */
-nav ul li:last-child {
-  position: absolute;
-  right: 40px;
-  /* Centrado vertical del contenedor li respecto al ul */
-  display: flex;
-  align-items: center; /* Esto centra verticalmente el botón dentro de los 40px */
-  height: 40px;
-  padding-bottom: 0; /* Reset del padding implícito si lo hubiera */
-}
-
-/* Estilos Específicos para el Botón Login */
-nav ul li:last-child a {
-  background-color: #27ae60; /* Verde corporativo */
-  color: white; /* Texto blanco */
-  height: auto;
-  padding: 6px 20px; /* Botón más compacto para caber en 40px */
-  border-radius: 20px;
-  line-height: normal;
-  margin-right: 0;
-  transition: all 0.3s ease;
-  /* Importante: evitar que herede el padding-bottom del selector genérico */
-  padding-bottom: 6px;
-}
-
-/* Hover específico para el botón Login */
-nav ul li:last-child a:hover {
-  background-color: #219150; /* Verde más oscuro */
-  color: white; /* Aseguramos texto blanco */
-  transform: translateY(-2px); /* Pequeño efecto de elevación */
-  box-shadow: 0 4px 10px rgba(39, 174, 96, 0.3); /* Sombra verde difusa */
-}
-
-/* Override para que no coja el estilo "activo" de línea inferior */
-nav ul li:last-child a.activo {
-  border-bottom: none;
-  background-color: #27ae60;
-  color: white;
-}
-
-/* --- LOGO A LA IZQUIERDA --- */
+/* LOGO: Posicionado a la izquierda de forma absoluta */
 .logo-container {
   position: absolute;
   left: 30px;
-  top: 15px;
-  height: 100%;
-  padding-bottom: 0;
+  top: 50%;
+  transform: translateY(-50%); /* Centrado vertical perfecto */
   display: flex;
-  align-items: center; /* Centrar verticalmente la imagen */
 }
 
-/* Reset de estilos del enlace para el logo */
-.logo-container a {
-  padding: 0 !important; /* Quitamos el padding de los enlaces de texto */
-  background-color: transparent !important;
-  border-bottom: none !important;
-  display: flex !important;
-  align-items: center;
-}
-
-/* Estilo de la imagen */
 .logo-container img {
-  height: 90px; /* Un tamaño adecuado para el nav de 70px */
+  height: 80px; /* Tamaño del logo */
   width: auto;
-  transition: transform 0.3s ease; /* Transición suave para el zoom */
+  transition: transform 0.3s;
 }
 
-/* Efecto Zoom al pasar el ratón */
-.logo-container a:hover img {
-  transform: scale(1.15); /* Aumenta un 15% su tamaño */
+.logo-container img:hover {
+  transform: scale(1.1);
+}
+
+/* LISTA DE ENLACES (Menú Central) */
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  height: 100%;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #333;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: color 0.3s;
+  cursor: pointer;
+}
+
+nav ul li a:hover,
+nav ul li a.activo {
+  color: #27ae60; /* Verde corporativo */
+}
+
+/* BOTÓN DE LOGIN (El último elemento li) */
+/* Lo sacamos del flujo normal y lo pegamos a la derecha */
+nav ul li:last-child {
+  position: absolute;
+  right: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Estilo del botón verde */
+nav ul li:last-child a {
+  background-color: #27ae60;
+  color: white !important; /* Texto blanco forzado */
+  padding: 8px 25px;
+  border-radius: 20px;
+  box-shadow: 0 4px 6px rgba(39, 174, 96, 0.2);
+}
+
+nav ul li:last-child a:hover {
+  background-color: #219150;
+  transform: translateY(-2px);
+}
+
+/* HAMBURGUESA (Oculta en PC) */
+.hamburger-btn {
+  display: none;
+}
+
+/* --- RESPONSIVE: MÓVIL Y TABLET (Menos de 768px) --- */
+@media (max-width: 768px) {
+  nav {
+    justify-content: space-between; /* Separar Logo y Hamburguesa */
+    height: 80px; /* Un poco más bajito en móvil */
+  }
+
+  .logo-container {
+    position: static; /* Ya no es absoluto en móvil */
+    transform: none;
+  }
+
+  .logo-container img {
+    height: 60px;
+  }
+
+  /* Mostrar botón hamburguesa */
+  .hamburger-btn {
+    display: block;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: #333;
+    cursor: pointer;
+  }
+
+  /* El menú desplegable */
+  nav ul {
+    position: fixed;
+    top: 80px; /* Debajo del nav */
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 80px);
+    background-color: white;
+    flex-direction: column; /* Vertical */
+    justify-content: flex-start;
+    padding-top: 40px;
+    transform: translateX(100%); /* Oculto a la derecha */
+    transition: transform 0.3s ease-in-out;
+  }
+
+  /* Clase para mostrar el menú */
+  nav ul.show {
+    transform: translateX(0);
+  }
+
+  nav ul li {
+    margin-bottom: 20px;
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Resetear el botón de login en móvil para que sea uno más de la lista */
+  nav ul li:last-child {
+    position: static;
+    right: auto;
+    top: auto;
+    transform: none;
+    margin-top: 20px;
+  }
+
+  nav ul li a {
+    font-size: 1.2rem;
+    display: block;
+  }
 }
